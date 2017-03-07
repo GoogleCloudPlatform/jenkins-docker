@@ -1,4 +1,4 @@
-mysql-docker
+jenkins-docker
 ============
 
 Dockerfile source for Jenkins [docker](https://docker.io) image.
