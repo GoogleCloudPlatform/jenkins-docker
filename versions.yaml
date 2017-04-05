@@ -18,9 +18,10 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 versions:
-  - dir: '2.32.2'
+  - dir: '2.32'
     repo: jenkins2
     tags:
+      - 2.32
       - 2.32.2
       - latest
     from: &from gcr.io/google-appengine/openjdk
