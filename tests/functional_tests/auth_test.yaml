@@ -1,0 +1,18 @@
+setup:
+- command: [docker, run, --privileged=true, --name, some-jenkins, -p, '8080:8080', -d, '$IMAGE']
+- command: [sleep, 30s]
+
+teardown:
+- command: [docker, stop, some-jenkins]
+- command: [docker, rm, some-jenkins]
+
+target: some-jenkins
+tests:
+- name: Test login
+  command:
+    - sh
+    - -c
+    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` http://localhost:8080/api/json
+  expect:
+    stdout:
+      matches: hudson.model.Hudson
