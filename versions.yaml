@@ -24,13 +24,11 @@ versions:
       - 2.32
       - 2.32.2
       - latest
-    from: &from gcr.io/google-appengine/openjdk
+    from: gcr.io/google-appengine/openjdk
     packages:
-      jenkins: &jenkins
-        gpg: f495a08733f69b1845fd2d9b3a46482adb6e6cee
-        major: 2.32
+      jenkins:
+        sha1: f495a08733f69b1845fd2d9b3a46482adb6e6cee
         version: 2.32.2
-      tini: &tini
-        gpg: afbf8de8a63ce8e4f18cb3f34dfdbbd354af68a1
-        major: 0.13
+      tini:
+        sha1: afbf8de8a63ce8e4f18cb3f34dfdbbd354af68a1
         version: 0.13.2
