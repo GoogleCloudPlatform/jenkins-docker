@@ -44,7 +44,7 @@ overview:
 
     For more information, see the
     [Official Image Launcher Page](https://console.cloud.google.com/launcher/details/google/jenkins2).
-  dockerfileUrl: https://github.com/GoogleCloudPlatform/jenkins-docker/tree/master/2/2.32
+  dockerfileUrl: https://github.com/GoogleCloudPlatform/jenkins-docker/tree/master/2
   pullCommand: *PullCommand
 
 taskGroups:

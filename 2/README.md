@@ -10,7 +10,7 @@ Pull command:
 gcloud docker -- pull launcher.gcr.io/google/jenkins2
 ```
 
-Dockerfile for this image can be found [here](https://github.com/GoogleCloudPlatform/jenkins-docker/tree/master/2/2.32).
+Dockerfile for this image can be found [here](https://github.com/GoogleCloudPlatform/jenkins-docker/tree/master/2).
 
 # <a name="table-of-contents"></a>Table of Contents
 * [Using Kubernetes](#using-kubernetes)
@@ -95,8 +95,8 @@ spec:
     - image: launcher.gcr.io/google/jenkins2
       name: jenkins
       env:
-        - name: "JAVA_OPTS"
-          value: "-Xmx2G -XX:MaxPermSize=128m"
+        - name: JAVA_OPTS
+          value: -Xmx2G -XX:MaxPermSize=128m
 ```
 
 Run the following to expose the ports:
@@ -197,7 +197,7 @@ services:
     container_name: some-jenkins
     image: launcher.gcr.io/google/jenkins2
     environment:
-      "JAVA_OPTS": "-Xmx2G -XX:MaxPermSize=128m"
+      JAVA_OPTS: -Xmx2G -XX:MaxPermSize=128m
 ```
 
 Or you can use `docker run` directly:
@@ -205,7 +205,7 @@ Or you can use `docker run` directly:
 ```shell
 docker run \
   --name some-jenkins \
-  -e "JAVA_OPTS=-Xmx2G -XX:MaxPermSize=128m" \
+  -e JAVA_OPTS=-Xmx2G -XX:MaxPermSize=128m \
   -d \
   launcher.gcr.io/google/jenkins2
 ```
