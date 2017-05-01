@@ -6,6 +6,7 @@ For more information, see the
 [Official Image Launcher Page](https://console.cloud.google.com/launcher/details/google/jenkins2).
 
 Pull command:
+
 ```shell
 gcloud docker -- pull launcher.gcr.io/google/jenkins2
 ```
@@ -43,6 +44,7 @@ This section describes how to spin up a Jenkins service using this image.
 ### <a name="starting-a-jenkins-instance-kubernetes"></a>Starting a Jenkins instance
 
 Copy the following content to `pod.yaml` file, and run `kubectl create -f pod.yaml`.
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -57,6 +59,7 @@ spec:
 ```
 
 Run the following to expose the ports:
+
 ```shell
 kubectl expose pod some-jenkins --name some-jenkins-8080 \
   --type LoadBalancer --port 8080 --protocol TCP
@@ -83,6 +86,7 @@ kubectl exec some-jenkins -- cat /var/jenkins_home/secrets/initialAdminPassword
 JVM arguments can be passed via environment variable `JAVA_OPTS`. For example, the following increases heap size to 2G and PermGen size to 128M.
 
 Copy the following content to `pod.yaml` file, and run `kubectl create -f pod.yaml`.
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -95,11 +99,12 @@ spec:
     - image: launcher.gcr.io/google/jenkins2
       name: jenkins
       env:
-        - name: JAVA_OPTS
-          value: -Xmx2G -XX:MaxPermSize=128m
+        - name: "JAVA_OPTS"
+          value: "-Xmx2G -XX:MaxPermSize=128m"
 ```
 
 Run the following to expose the ports:
+
 ```shell
 kubectl expose pod some-jenkins --name some-jenkins-8080 \
   --type LoadBalancer --port 8080 --protocol TCP
@@ -112,6 +117,7 @@ kubectl expose pod some-jenkins --name some-jenkins-50000 \
 ### <a name="creating-a-jenkins-backup-kubernetes"></a>Creating a Jenkins backup
 
 You can simply copy `/var/jenkins_home` directory on the container to `/path/to/your/jenkins/home` directory on your host.
+
 ```shell
 kubectl cp some-jenkins:/var/jenkins_home /path/to/your/jenkins/home
 ```
@@ -125,6 +131,7 @@ This section describes how to spin up a Jenkins service using this image.
 ### <a name="starting-a-jenkins-instance-docker"></a>Starting a Jenkins instance
 
 Use the following content for the `docker-compose.yml` file, then run `docker-compose up`.
+
 ```yaml
 version: '2'
 services:
@@ -155,6 +162,7 @@ All Jenkins data lives in `/var/jenkins_home`, including plugins and configurati
 Assume `/path/to/jenkins/home` is the persistent directory on your host.
 
 Use the following content for the `docker-compose.yml` file, then run `docker-compose up`.
+
 ```yaml
 version: '2'
 services:
@@ -190,6 +198,7 @@ docker exec some-jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 JVM arguments can be passed via environment variable `JAVA_OPTS`. For example, the following increases heap size to 2G and PermGen size to 128M.
 
 Use the following content for the `docker-compose.yml` file, then run `docker-compose up`.
+
 ```yaml
 version: '2'
 services:
@@ -197,7 +206,7 @@ services:
     container_name: some-jenkins
     image: launcher.gcr.io/google/jenkins2
     environment:
-      JAVA_OPTS: -Xmx2G -XX:MaxPermSize=128m
+      "JAVA_OPTS": "-Xmx2G -XX:MaxPermSize=128m"
 ```
 
 Or you can use `docker run` directly:
@@ -205,7 +214,7 @@ Or you can use `docker run` directly:
 ```shell
 docker run \
   --name some-jenkins \
-  -e JAVA_OPTS=-Xmx2G -XX:MaxPermSize=128m \
+  -e "JAVA_OPTS=-Xmx2G -XX:MaxPermSize=128m" \
   -d \
   launcher.gcr.io/google/jenkins2
 ```
@@ -215,6 +224,7 @@ docker run \
 ### <a name="creating-a-jenkins-backup-docker"></a>Creating a Jenkins backup
 
 You can simply copy `/var/jenkins_home` directory on the container to `/path/to/your/jenkins/home` directory on your host.
+
 ```shell
 docker cp some-jenkins:/var/jenkins_home /path/to/your/jenkins/home
 ```
