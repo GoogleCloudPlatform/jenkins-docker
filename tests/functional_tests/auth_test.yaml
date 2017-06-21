@@ -19,7 +19,7 @@
 
 setup:
 - command: [docker, run, --privileged=true, --name, some-jenkins, -p, '8080:8080', -d, '$IMAGE']
-- command: [sleep, 30s]
+- command: [sleep, 45s]
 
 teardown:
 - command: [docker, stop, some-jenkins]
