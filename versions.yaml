@@ -21,14 +21,14 @@ versions:
   - dir: '2/2.46.2'
     repo: jenkins2
     tags:
-      - 2.46.2
-      - 2.46
+      - '2.46.2'
+      - '2.46'
       - latest
     from: gcr.io/google-appengine/openjdk
     packages:
       jenkins:
         sha1: b91fa09838342980f56224adcf5f02edf668d834
-        version: 2.46.2
+        version: '2.46.2'
       tini:
         sha1: b2d2b6d7f570158ae5eccbad9b98b5e9f040f853
-        version: 0.14.0
+        version: '0.14.0'
