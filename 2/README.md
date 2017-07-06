@@ -138,6 +138,9 @@ services:
   jenkins:
     container_name: some-jenkins
     image: launcher.gcr.io/google/jenkins2
+    ports:
+      - '8080:8080'
+      - '50000:50000'
 ```
 
 Or you can use `docker run` directly:
@@ -145,6 +148,8 @@ Or you can use `docker run` directly:
 ```shell
 docker run \
   --name some-jenkins \
+  -p 8080:8080 \
+  -p 50000:50000 \
   -d \
   launcher.gcr.io/google/jenkins2
 ```
@@ -169,6 +174,9 @@ services:
   jenkins:
     container_name: some-jenkins
     image: launcher.gcr.io/google/jenkins2
+    ports:
+      - '8080:8080'
+      - '50000:50000'
     volumes:
       - /path/to/jenkins/home:/var/jenkins_home
 ```
@@ -178,6 +186,8 @@ Or you can use `docker run` directly:
 ```shell
 docker run \
   --name some-jenkins \
+  -p 8080:8080 \
+  -p 50000:50000 \
   -v /path/to/jenkins/home:/var/jenkins_home \
   -d \
   launcher.gcr.io/google/jenkins2
@@ -207,6 +217,9 @@ services:
     image: launcher.gcr.io/google/jenkins2
     environment:
       "JAVA_OPTS": "-Xmx2G -XX:MaxPermSize=128m"
+    ports:
+      - '8080:8080'
+      - '50000:50000'
 ```
 
 Or you can use `docker run` directly:
@@ -215,6 +228,8 @@ Or you can use `docker run` directly:
 docker run \
   --name some-jenkins \
   -e "JAVA_OPTS=-Xmx2G -XX:MaxPermSize=128m" \
+  -p 8080:8080 \
+  -p 50000:50000 \
   -d \
   launcher.gcr.io/google/jenkins2
 ```
