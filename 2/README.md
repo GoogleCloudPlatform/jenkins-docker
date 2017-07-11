@@ -5,7 +5,7 @@ This image contains an installation Jenkins 2.x.
 For more information, see the
 [Official Image Launcher Page](https://console.cloud.google.com/launcher/details/google/jenkins2).
 
-Pull command:
+Pull command (first install [gcloud](https://cloud.google.com/sdk/downloads)):
 
 ```shell
 gcloud docker -- pull launcher.gcr.io/google/jenkins2
@@ -37,6 +37,9 @@ Dockerfile for this image can be found [here](https://github.com/GoogleCloudPlat
 
 # <a name="using-kubernetes"></a>Using Kubernetes
 
+Consult [Launcher container documentation](https://cloud.google.com/launcher/docs/launcher-container)
+for additional information about setting up your Kubernetes environment.
+
 ## <a name="running-jenkins-server-kubernetes"></a>Running Jenkins server
 
 This section describes how to spin up a Jenkins service using this image.
@@ -58,7 +61,10 @@ spec:
       name: jenkins
 ```
 
-Run the following to expose the ports:
+Run the following to expose the ports.
+Depending on your cluster setup, this might expose your service to the
+Internet with an external IP address. For more information, consult
+[Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/).
 
 ```shell
 kubectl expose pod some-jenkins --name some-jenkins-8080 \
@@ -103,7 +109,10 @@ spec:
           value: "-Xmx2G -XX:MaxPermSize=128m"
 ```
 
-Run the following to expose the ports:
+Run the following to expose the ports.
+Depending on your cluster setup, this might expose your service to the
+Internet with an external IP address. For more information, consult
+[Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/).
 
 ```shell
 kubectl expose pod some-jenkins --name some-jenkins-8080 \
@@ -123,6 +132,9 @@ kubectl cp some-jenkins:/var/jenkins_home /path/to/your/jenkins/home
 ```
 
 # <a name="using-docker"></a>Using Docker
+
+Consult [Launcher container documentation](https://cloud.google.com/launcher/docs/launcher-container)
+for additional information about setting up your Docker environment.
 
 ## <a name="running-jenkins-server-docker"></a>Running Jenkins server
 
