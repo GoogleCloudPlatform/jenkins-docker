@@ -18,17 +18,17 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 versions:
-  - dir: '2/2.46.2'
+  - dir: '2/2.6'
     repo: jenkins2
     tags:
-      - '2.46.2'
-      - '2.46'
+      - '2.60.1'
+      - '2.60'
       - latest
     from: gcr.io/google-appengine/openjdk
     packages:
       jenkins:
-        sha1: b91fa09838342980f56224adcf5f02edf668d834
-        version: '2.46.2'
+        sha1: 34fde424dde0e050738f5ad1e316d54f741c237bd380bd663a07f96147bb1390
+        version: '2.60.1'
       tini:
-        sha1: b2d2b6d7f570158ae5eccbad9b98b5e9f040f853
+        sha1: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
         version: '0.14.0'
