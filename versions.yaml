@@ -18,7 +18,7 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 versions:
-  - dir: '2/2.6'
+  - dir: '2/2.60'
     repo: jenkins2
     tags:
       - '2.60.1'
@@ -27,7 +27,7 @@ versions:
     from: gcr.io/google-appengine/openjdk
     packages:
       jenkins:
-        sha1: 34fde424dde0e050738f5ad1e316d54f741c237bd380bd663a07f96147bb1390
+        sha1: 14d0788d89be82958a46965de039a55813f9727bd4d0592dc77905976483ba95
         version: '2.60.1'
       tini:
         sha1: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
