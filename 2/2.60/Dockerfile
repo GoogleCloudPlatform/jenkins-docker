@@ -1,9 +1,5 @@
 FROM gcr.io/google-appengine/openjdk
 
-# Get the list of packages from the base image.
-COPY download_source /tmp
-RUN /tmp/download_source blacklist-all-current
-
 RUN mkdir /docker-entrypoint-initdb.d
 
 RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
@@ -76,9 +72,3 @@ ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
 # from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
-
-# Download source code for GPL packages.
-USER root
-RUN /tmp/download_source exclude-sources /etc/apt/sources.list.d/mongodb-org.list \
-	&& /tmp/download_source download /usr/local/src \
-	&& rm /tmp/download_source
