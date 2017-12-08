@@ -18,14 +18,14 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 setup:
-- command: [docker, run, --privileged=true, --name, some-jenkins, -p, '8080:8080', -d, '$IMAGE']
+- command: [docker, run, --privileged=true, --name, some-jenkins-$UNIQUE-id, -p, '8080:8080', -d, '$IMAGE']
 - command: [sleep, 45s]
 
 teardown:
-- command: [docker, stop, some-jenkins]
-- command: [docker, rm, some-jenkins]
+- command: [docker, stop, some-jenkins-$UNIQUE-id]
+- command: [docker, rm, some-jenkins-$UNIQUE-id]
 
-target: some-jenkins
+target: some-jenkins-$UNIQUE-id
 tests:
 - name: Test login
   command:
