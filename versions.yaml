@@ -24,6 +24,7 @@ versions:
       - '2.89.3'
       - '2.89'
       - 'stable'
+      - 'latest'
     from: gcr.io/google-appengine/openjdk
     packages:
       jenkins:
