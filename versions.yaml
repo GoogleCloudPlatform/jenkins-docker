@@ -33,3 +33,6 @@ versions:
       tini:
         sha256: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
         version: '0.14.0'
+
+cloudbuild:
+  enable_parallel: true
