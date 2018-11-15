@@ -21,15 +21,15 @@ versions:
   - dir: '2/2.138'
     repo: jenkins2
     tags:
-      - '2.138.2'
+      - '2.138.3'
       - '2.138'
       - 'stable'
       - 'latest'
     from: gcr.io/google-appengine/openjdk
     packages:
       jenkins:
-        sha256: d8ed5a7033be57aa9a84a5342b355ef9f2ba6cdb490db042a6d03efb23ca1e83
-        version: '2.138.2'
+        sha256: 953e4dda2d3065284c0016b3e8279e097f830c128b1f712d84780ff2b0751e7d
+        version: '2.138.3'
       tini:
         sha256: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
         version: '0.14.0'
