@@ -18,13 +18,26 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 versions:
+  - dir: '2/2.150'
+    repo: jenkins2
+    tags:
+      - '2.150.1'
+      - '2.150'
+      - 'stable'
+      - 'latest'
+    from: gcr.io/google-appengine/openjdk
+    packages:
+      jenkins:
+        sha256: 7a38586d5a3a1a83498809a83715728bb2f01b58a7dd3a88366f076efdaf6669
+        version: '2.150.1'
+      tini:
+        sha256: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
+        version: '0.14.0'
   - dir: '2/2.138'
     repo: jenkins2
     tags:
       - '2.138.2'
       - '2.138'
-      - 'stable'
-      - 'latest'
     from: gcr.io/google-appengine/openjdk
     packages:
       jenkins:
@@ -35,4 +48,4 @@ versions:
         version: '0.14.0'
 
 cloudbuild:
-  enable_parallel: true
+  enable_parallel: false
