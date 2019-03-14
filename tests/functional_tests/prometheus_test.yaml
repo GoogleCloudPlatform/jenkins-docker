@@ -22,7 +22,6 @@ setup:
 - command: [sleep, 240s]
 
 teardown:
-- command: [docker, logs, pro-jenkins-$UNIQUE-id]
 - command: [docker, stop, pro-jenkins-$UNIQUE-id]
 - command: [docker, rm, pro-jenkins-$UNIQUE-id]
 
