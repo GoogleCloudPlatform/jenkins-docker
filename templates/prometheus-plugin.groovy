@@ -45,7 +45,7 @@ sleep 6400
 
 def uc = jenkins.model.Jenkins.instance.getUpdateCenter()
 def pl = uc.getPlugin('prometheus')
-c = 3
+c = 10
 while (pl == null && c != 0) {
   println "### Prometheus plugin retry..."
   sleep(1280)
