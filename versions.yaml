@@ -33,16 +33,16 @@ versions:
       tini:
         sha256: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
         version: '0.14.0'
-  - dir: '2/2.138'
+  - dir: '2/2.150'
     repo: jenkins2
     tags:
-      - '2.138.2'
-      - '2.138'
+      - '2.150.3'
+      - '2.150'
     from: gcr.io/google-appengine/openjdk
     packages:
       jenkins:
-        sha256: d8ed5a7033be57aa9a84a5342b355ef9f2ba6cdb490db042a6d03efb23ca1e83
-        version: '2.138.2'
+        sha256: 4fc2700a27a6ccc53da9d45cc8b2abd41951b361e562e1a1ead851bea61630fd
+        version: '2.150.3'
       tini:
         sha256: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
         version: '0.14.0'
