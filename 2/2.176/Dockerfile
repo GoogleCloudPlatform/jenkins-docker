@@ -46,6 +46,8 @@ ARG JENKINS_SHA=9406c7bee2bc473f77191ace951993f89922f927a0cd7efb658a4247d67b9aa3
 # Can be used to customize where jenkins.war get downloaded from
 ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
 
+ENV C2D_RELEASE=${JENKINS_VERSION}
+
 # could use ADD but this one does not check Last-Modified header neither does it allow to control checksum
 # see https://github.com/docker/docker/issues/8331
 RUN curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war \
