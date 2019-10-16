@@ -26,11 +26,10 @@ import jenkins.install.InstallState
 
 def env = System.getenv()
 
-def install_monitoring = env['INSTALL_MONITORING']
 def install_prometheus = env['INSTALL_PROMETHEUS']
-if (!install_monitoring && !install_prometheus) {
-  println "### INSTALL_MONITORING environment variable is not set."
-  println "### Monitoring plugin is not going to be installed."
+if (!install_prometheus) {
+  println "### INSTALL_PROMETHEUS environment variable is not set."
+  println "### Prometheus plugin is not going to be installed."
   return
 }
 
@@ -38,19 +37,19 @@ def jenkins = Jenkins.getInstanceOrNull()
 
 // Jenkins installation and configuration already completed
 if (jenkins.installState.isSetupComplete()) {
-  println "### Monitoring plugin installation already completed"
+  println "### Prometheus plugin installation already completed"
   return
 }
 
 sleep 6400
 
 def uc = jenkins.model.Jenkins.instance.getUpdateCenter()
-def pl = uc.getPlugin('monitoring')
+def pl = uc.getPlugin('prometheus')
 c = 10
 while (pl == null && c != 0) {
-  println "### Monitoring plugin retry..."
+  println "### Prometheus plugin retry..."
   sleep(1280)
-  pl = uc.getPlugin('monitoring')
+  pl = uc.getPlugin('prometheus')
   c--
 }
 
@@ -61,4 +60,4 @@ while(!installationStatus.isDone()) {
   sleep(1280)
 }
 
-println "### Monitoring plugin installation completed"
+println "### Prometheus plugin installation completed"
