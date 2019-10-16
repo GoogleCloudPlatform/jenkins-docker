@@ -46,6 +46,19 @@ versions:
       tini:
         sha256: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
         version: '0.14.0'
+  - dir: '2/2.190'
+    repo: jenkins2
+    tags:
+      - '2.190.1'
+      - '2.190'
+    from: gcr.io/google-appengine/openjdk
+    packages:
+      jenkins:
+        sha256: 46fb1d25d9423fc66aadd648dc74b9772863a7fbbd89bfc14c873cd0c3436f05
+        version: '2.190.1'
+      tini:
+        sha256: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
+        version: '0.14.0'
 
 cloudbuild:
   enable_parallel: false
