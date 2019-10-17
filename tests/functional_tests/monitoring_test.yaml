@@ -19,7 +19,7 @@
 
 setup:
 - command: [docker, run, --privileged=true, --name, pro-jenkins-$UNIQUE-id, -p, '8080:8080', -e, 'INSTALL_MONITORING=true', -d, '$IMAGE']
-- command: [sleep, 240s]
+- command: [sleep, 60s]
 
 teardown:
 - command: [docker, stop, pro-jenkins-$UNIQUE-id]
@@ -31,7 +31,7 @@ tests:
   command:
     - sh
     - -c
-    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` -s http://localhost:8080/monitoring?format=prometheus
+    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` -s http://localhost:8080/monitoring
   expect:
     stdout:
-      matches: TYPE javamelody_memory_used_bytes gauge
+      matches: Last collect time
