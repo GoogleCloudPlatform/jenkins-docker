@@ -23,6 +23,8 @@ versions:
     tags:
       - '2.190.1'
       - '2.190'
+      - 'stable'
+      - 'latest'
     from: gcr.io/google-appengine/openjdk
     packages:
       jenkins:
