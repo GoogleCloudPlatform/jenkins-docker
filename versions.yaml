@@ -1,4 +1,4 @@
-# Copyright (c) 2017 Google Inc.
+# Copyright 2019 Google LLC
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this software and associated documentation files (the "Software"), to deal in
@@ -17,22 +17,43 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-versions:
-  - dir: '2/2.190'
-    repo: jenkins2
-    tags:
-      - '2.190.1'
-      - '2.190'
-      - 'stable'
-      - 'latest'
-    from: gcr.io/google-appengine/openjdk
-    packages:
-      jenkins:
-        sha256: 46fb1d25d9423fc66aadd648dc74b9772863a7fbbd89bfc14c873cd0c3436f05
-        version: '2.190.1'
-      tini:
-        sha256: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
-        version: '0.14.0'
 
 cloudbuild:
   enable_parallel: false
+versions:
+- dir: 2/debian9/2.190
+  from: gcr.io/google-appengine/openjdk
+  packages:
+    jenkins:
+      sha256: 79c2042b30ad71dc9cf17a5877f64eaed405fa03e24e002ca60f8db73b7ad490
+      version: 2.190.3
+    tini:
+      sha256: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
+      version: 0.14.0
+  repo: jenkins2
+  tags:
+  - 2.190.3-debian9
+  - 2.190-debian9
+  - 2.190.3
+  - '2.190'
+  templateArgs:
+    c2dRelease: 2.190.3
+- dir: 2/debian9/2.208
+  from: gcr.io/google-appengine/openjdk
+  packages:
+    jenkins:
+      sha256: 68f1c3af0f16a50b9026b5de8e53f24633e34a8447192aae17e4be914a30ac52
+      version: '2.208'
+    tini:
+      sha256: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
+      version: 0.14.0
+  repo: jenkins2
+  tags:
+  - 2.208-debian9
+  - 2-debian9
+  - '2.208'
+  - '2'
+  - latest
+  templateArgs:
+    c2dRelease: 2.208.0
+
