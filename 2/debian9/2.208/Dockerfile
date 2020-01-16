@@ -1,8 +1,4 @@
-FROM {{ .From }}
-
-{{- $jenkins := index .Packages "jenkins" }}
-{{- $tini := index .Packages "tini" }}
-{{- $c2dRelease := index .TemplateArgs "c2dRelease" }}
+FROM gcr.io/google-appengine/openjdk
 
 RUN mkdir /docker-entrypoint-initdb.d
 
@@ -31,8 +27,8 @@ VOLUME /var/jenkins_home
 # or config file with your custom jenkins Docker image.
 RUN mkdir -p /usr/share/jenkins/ref/init.groovy.d
 
-ENV TINI_VERSION {{ $tini.Version }}
-ENV TINI_SHA {{ $tini.Sha256 }}
+ENV TINI_VERSION 0.14.0
+ENV TINI_SHA 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
 
 # Use tini as subreaper in Docker container to adopt zombie processes
 RUN curl -fsSL https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini-static-amd64 -o /bin/tini && chmod +x /bin/tini \
@@ -42,12 +38,12 @@ RUN mkdir -p /usr/share/doc/tini && curl -fsSL https://raw.githubusercontent.com
 COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
 
 # jenkins version being bundled in this docker image
-ENV JENKINS_VERSION {{ $jenkins.Version }}
+ENV JENKINS_VERSION 2.208
 
-ENV C2D_RELEASE {{ $c2dRelease }}
+ENV C2D_RELEASE 2.208.0
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA={{ $jenkins.Sha256 }}
+ARG JENKINS_SHA=68f1c3af0f16a50b9026b5de8e53f24633e34a8447192aae17e4be914a30ac52
 
 # Can be used to customize where jenkins.war get downloaded from
 ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
