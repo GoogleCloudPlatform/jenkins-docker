@@ -1,4 +1,4 @@
-# Copyright 2019 Google LLC
+# Copyright 2020 Google LLC
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this software and associated documentation files (the "Software"), to deal in
@@ -21,24 +21,24 @@
 cloudbuild:
   enable_parallel: false
 versions:
-- dir: 2/debian9/2.208
+- dir: 2/debian9/2.218
   from: gcr.io/google-appengine/openjdk
   packages:
     jenkins:
-      sha256: 68f1c3af0f16a50b9026b5de8e53f24633e34a8447192aae17e4be914a30ac52
-      version: '2.208'
+      sha256: 685f2276d485acc5ab7be358247965f0cce2f903d84c6da394de727fe6c23dc7
+      version: '2.218'
     tini:
       sha256: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
       version: 0.14.0
   repo: jenkins2
   tags:
-  - 2.208-debian9
+  - 2.218-debian9
   - 2-debian9
-  - '2.208'
+  - '2.218'
   - '2'
   - latest
   templateArgs:
-    c2dRelease: 2.208.0
+    c2dRelease: 2.218.0
 - dir: 2/debian9/2.190
   from: gcr.io/google-appengine/openjdk
   packages:
