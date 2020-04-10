@@ -28,8 +28,8 @@ versions:
       sha256: 5a6cbb836ceb79728c2d9f72645d0680f789cdb09a44485076aba6143bea953e
       version: 2.222.1
     tini:
-      sha256: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
-      version: 0.14.0
+      sha256: eadb9d6e2dc960655481d78a92d2c8bc021861045987ccd3e27c7eae5af0cf33
+      version: 0.18.0
   repo: jenkins2
   tags:
   - 2.222.1-debian9
@@ -48,8 +48,8 @@ versions:
       sha256: 79c2042b30ad71dc9cf17a5877f64eaed405fa03e24e002ca60f8db73b7ad490
       version: 2.190.3
     tini:
-      sha256: 6c41ec7d33e857d4779f14d9c74924cab0c7973485d2972419a3b7c7620ff5fd
-      version: 0.14.0
+      sha256: eadb9d6e2dc960655481d78a92d2c8bc021861045987ccd3e27c7eae5af0cf33
+      version: 0.18.0
   repo: jenkins2
   tags:
   - 2.190.3-debian9
