@@ -65,16 +65,15 @@ EXPOSE 50000
 
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 
-COPY jenkins-support /usr/local/bin/jenkins-support
-COPY jenkins.sh /usr/local/bin/jenkins.sh
-# from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
-COPY plugins.sh /usr/local/bin/plugins.sh
-COPY install-plugins.sh /usr/local/bin/install-plugins.sh
-COPY monitoring-plugin.groovy /usr/share/jenkins/ref/init.groovy.d/monitoring-plugin.groovy
+COPY --chown=${user} jenkins-support /usr/local/bin/jenkins-support
+COPY --chown=${user} jenkins.sh /usr/local/bin/jenkins.sh
 
-RUN chown ${user}:${group} /usr/local/bin/*.sh \
-    && chown ${user}:${group} /usr/local/bin/jenkins-support \
-    && chown -R ${user}:${group} /usr/share/jenkins/
+# from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
+COPY --chown=${user} plugins.sh /usr/local/bin/plugins.sh
+COPY --chown=${user} install-plugins.sh /usr/local/bin/install-plugins.sh
+COPY --chown=${user} monitoring-plugin.groovy /usr/share/jenkins/ref/init.groovy.d/monitoring-plugin.groovy
+
+RUN chown -R ${user}:${group} /usr/share/jenkins/
 
 USER ${user}
 
