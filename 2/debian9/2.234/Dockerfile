@@ -38,12 +38,12 @@ RUN mkdir -p /usr/share/doc/tini && curl -fsSL https://raw.githubusercontent.com
 COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
 
 # jenkins version being bundled in this docker image
-ENV JENKINS_VERSION 2.231
+ENV JENKINS_VERSION 2.234
 
-ENV C2D_RELEASE 2.231.0
+ENV C2D_RELEASE 2.234.0
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=573b2201a305ec02b751dc57d2a3dffa8441a88d0925a9857a83e9695951c392
+ARG JENKINS_SHA=481ecc74bd6e5df1f32fe6acac59b0cf5e49790c3c2c48ee124ce469d133f4c0
 
 # Can be used to customize where jenkins.war get downloaded from
 
