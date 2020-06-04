@@ -43,17 +43,17 @@ versions:
   from: gcr.io/google-appengine/openjdk
   packages:
     jenkins:
-      sha256: 1529d642e29e74f65369ff5611935e9361065d9e8f65344a64912c5660cc0781
-      version: 2.222.3
+      sha256: 6c95721b90272949ed8802cab8a84d7429306f72b180c5babc33f5b073e1c47c
+      version: 2.222.4
     tini:
       sha256: eadb9d6e2dc960655481d78a92d2c8bc021861045987ccd3e27c7eae5af0cf33
       version: 0.18.0
   repo: jenkins2
   tags:
-  - 2.222.3-debian9
+  - 2.222.4-debian9
   - 2.222-debian9
-  - 2.222.3
+  - 2.222.4
   - '2.222'
   templateArgs:
-    c2dRelease: 2.222.3
+    c2dRelease: 2.222.4
 
