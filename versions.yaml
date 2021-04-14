@@ -21,24 +21,24 @@
 cloudbuild:
   enable_parallel: false
 versions:
-- dir: 2/debian9/2.287
+- dir: 2/debian9/2.288
   from: gcr.io/google-appengine/openjdk
   packages:
     jenkins:
-      sha256: e6b38ddb9785ff82e3ccae0872d3c9c0b22c2d82a06eba71e4f1e8841c0deed1
-      version: '2.287'
+      sha256: 1da9936168a6fe1b8c5c707cdecb6dbacae2811e3a62d0fb5b01a33d114c22e6
+      version: '2.288'
     tini:
       sha256: eadb9d6e2dc960655481d78a92d2c8bc021861045987ccd3e27c7eae5af0cf33
       version: 0.18.0
   repo: jenkins2
   tags:
-  - 2.287-debian9
+  - 2.288-debian9
   - 2-debian9
-  - '2.287'
+  - '2.288'
   - '2'
   - latest
   templateArgs:
-    c2dRelease: 2.287.0
+    c2dRelease: 2.288.0
 - dir: 2/debian9/2.222
   from: gcr.io/google-appengine/openjdk
   packages:
