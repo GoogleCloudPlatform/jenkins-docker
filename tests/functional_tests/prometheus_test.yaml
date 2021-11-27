@@ -37,7 +37,7 @@ teardown:
 
 target: some-jenkins-$UNIQUE
 tests:
-- name: Test Monitoring Prometheus Format
+- name: Test Prometheus metrics
   command:
     - sh
     - -c
