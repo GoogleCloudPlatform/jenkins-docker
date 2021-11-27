@@ -1,4 +1,4 @@
-# Copyright (c) 2018 Google Inc.
+# Copyright (c) 2021 Google Inc.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this software and associated documentation files (the "Software"), to deal in
@@ -18,20 +18,30 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 setup:
-- command: [docker, run, --privileged=true, --name, pro-jenkins-$UNIQUE-id, -p, '8080:8080', -e, 'INSTALL_MONITORING=true', -e, 'INSTALL_PROMETHEUS=true', -d, '$IMAGE']
-- command: [sleep, 60s]
+- command:
+  - docker
+  - run
+  - '--name'
+  - 'some-jenkins-$UNIQUE',
+  - '-p'
+  - '8080:8080'
+  - '-e'
+  - 'INSTALL_PROMETHEUS=true'
+  - '-d'
+  - '$IMAGE'
+- command: [sleep, 180s]
 
 teardown:
-- command: [docker, stop, pro-jenkins-$UNIQUE-id]
-- command: [docker, rm, pro-jenkins-$UNIQUE-id]
+- command: [docker, stop, some-jenkins-$UNIQUE]
+- command: [docker, rm, some-jenkins-$UNIQUE]
 
-target: pro-jenkins-$UNIQUE-id
+target: some-jenkins-$UNIQUE
 tests:
-- name: Test Prometheus plugin
+- name: Test Monitoring Prometheus Format
   command:
     - sh
     - -c
-    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` -s http://localhost:8080/monitoring?format=prometheus
+    - curl -L -s http://localhost:8080/prometheus
   expect:
     stdout:
-      matches: TYPE javamelody_memory_used_bytes gauge
+      matches: TYPE default_jenkins_executors_available gauge
