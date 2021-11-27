@@ -21,44 +21,79 @@ import jenkins.model.*
 
 import hudson.model.*
 import hudson.security.*
+import hudson.util.VersionNumber
 
 import jenkins.install.InstallState
 
 def env = System.getenv()
+def plugins = []
 
 def install_monitoring = env['INSTALL_MONITORING']
 def install_prometheus = env['INSTALL_PROMETHEUS']
+
+if (install_monitoring) {
+  plugins << "monitoring"
+  println "### Monitoring plugin should be installed."
+}
+
+if (install_prometheus) {
+  plugins << "prometheus"
+  println "### Prometheus plugin should be installed."
+}
+
 if (!install_monitoring && !install_prometheus) {
-  println "### INSTALL_MONITORING environment variable is not set."
-  println "### Monitoring plugin is not going to be installed."
+  println "### INSTALL_MONITORING or INSTALL_PROMETHEUS environment variables should be set."
+  println "### No plugins to be installed."
   return
 }
 
-def jenkins = Jenkins.getInstanceOrNull()
+def instance = Jenkins.getInstanceOrNull()
 
 // Jenkins installation and configuration already completed
-if (jenkins.installState.isSetupComplete()) {
-  println "### Monitoring plugin installation already completed"
+if (instance.installState.isSetupComplete()) {
+  println "### Jenkins is ready."
   return
 }
 
 sleep 6400
 
-def uc = jenkins.model.Jenkins.instance.getUpdateCenter()
-def pl = uc.getPlugin('monitoring')
-c = 10
-while (pl == null && c != 0) {
-  println "### Monitoring plugin retry..."
-  sleep(1280)
-  pl = uc.getPlugin('monitoring')
-  c--
+def requires_restart = false
+
+plugins.each { plugin ->
+  def uc = instance.getUpdateCenter()
+  def pl = uc.getPlugin(plugin)
+
+  c = 10
+  while (pl == null && c != 0) {
+    println "### Plugin ${plugin} retry..."
+    sleep(1280)
+    pl = uc.getPlugin(plugin)
+    c--
+  }
+
+  println "### Plugin: ${plugin}"
+  println "### Java Version: ${pl.minimumJavaVersion}"
+  println "### Version: ${pl.version}"
+
+  def installationStatus = pl.deploy()
+
+  // Waiting for plugin to install
+  while(!installationStatus.isDone()) {
+    println "### Awaiting plugin setup..."
+    sleep(1280)
+  }
+
+  // Mark to restart if a plugin requires restart
+  if (!requires_restart && uc.isRestartRequiredForCompletion()) {
+    requires_restart = true
+  }
 }
 
-def installationStatus = pl.deploy(true)
-
-// Waiting for plugin to install...
-while(!installationStatus.isDone()) {
-  sleep(1280)
+/// Restart instance if required
+if ( requires_restart ) {
+  println "### Restart is required. Restarting it..."
+  instance.save()
+  instance.doSafeRestart()
 }
 
-println "### Monitoring plugin installation completed"
+println "### Monitoring plugins installation completed"
