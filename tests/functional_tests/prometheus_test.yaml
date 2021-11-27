@@ -22,7 +22,7 @@ setup:
   - docker
   - run
   - '--name'
-  - 'some-jenkins-$UNIQUE',
+  - 'some-jenkins-$UNIQUE'
   - '-p'
   - '8080:8080'
   - '-e'
