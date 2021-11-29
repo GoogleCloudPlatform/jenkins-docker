@@ -57,10 +57,10 @@ if (instance.installState.isSetupComplete()) {
 
 sleep 6400
 
+def uc = instance.getUpdateCenter()
 def requires_restart = false
 
 plugins.each { plugin ->
-  def uc = instance.getUpdateCenter()
   def pl = uc.getPlugin(plugin)
 
   c = 10
@@ -89,8 +89,8 @@ plugins.each { plugin ->
   }
 }
 
-/// Restart instance if required
-if ( requires_restart ) {
+// Restart instance if required
+if (requires_restart) {
   println "### Restart is required. Restarting it..."
   instance.save()
   instance.doSafeRestart()
