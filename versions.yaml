@@ -21,37 +21,39 @@
 cloudbuild:
   enable_parallel: false
 versions:
+- dir: 2/debian9/2.327
+  from: gcr.io/google-appengine/openjdk
+  packages:
+    jenkins:
+      sha256: 1887467c6751260a55b8fc1753ba21fa5f79704c57c3b484392813e2193ef45a
+      version: '2.327'
+    tini:
+      sha256: eadb9d6e2dc960655481d78a92d2c8bc021861045987ccd3e27c7eae5af0cf33
+      version: 0.18.0
+  repo: jenkins2
+  tags:
+  - 2.327-debian9
+  - 2-debian9
+  - '2.327'
+  - '2'
+  - latest
+  templateArgs:
+    c2dRelease: 2.327.0
 - dir: 2/debian9/2.319
   from: gcr.io/google-appengine/openjdk
   packages:
     jenkins:
-      sha256: 50e9c818cda1bdf3ba7e2a1e590f027a889bd527d5bcfc2daea944ce351c7105
-      version: '2.319'
+      sha256: 7e4b848a752eda740c2c7a60956bf05d9df42602c805bbaeac897179b630a562
+      version: 2.319.1
     tini:
       sha256: eadb9d6e2dc960655481d78a92d2c8bc021861045987ccd3e27c7eae5af0cf33
       version: 0.18.0
   repo: jenkins2
   tags:
+  - 2.319.1-debian9
   - 2.319-debian9
-  - 2-debian9
+  - 2.319.1
   - '2.319'
-  - '2'
-  - latest
   templateArgs:
-    c2dRelease: 2.319.0
-- dir: 2/debian9/2.288
-  from: gcr.io/google-appengine/openjdk
-  packages:
-    jenkins:
-      sha256: 1da9936168a6fe1b8c5c707cdecb6dbacae2811e3a62d0fb5b01a33d114c22e6
-      version: '2.288'
-    tini:
-      sha256: eadb9d6e2dc960655481d78a92d2c8bc021861045987ccd3e27c7eae5af0cf33
-      version: 0.18.0
-  repo: jenkins2
-  tags:
-  - 2.288-debian9
-  - '2.288'
-  templateArgs:
-    c2dRelease: 2.288.0
+    c2dRelease: 2.319.1
 
