@@ -72,7 +72,6 @@ plugins.each { plugin ->
   }
 
   println "### Plugin: ${plugin}"
-  println "### Java Version: ${pl.minimumJavaVersion}"
   println "### Version: ${pl.version}"
 
   def installationStatus = pl.deploy()
