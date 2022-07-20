@@ -39,21 +39,3 @@ versions:
   - latest
   templateArgs:
     c2dRelease: 2.359.0
-- dir: 2/debian11/2.319
-  from: marketplace.gcr.io/google/debian11
-  packages:
-    jenkins:
-      sha256: 73dd91b395bcf62fe25e6d3074765f1510c9e584ecc1e9faf44051064181b434
-      version: 2.319.3
-    tini:
-      sha256: eadb9d6e2dc960655481d78a92d2c8bc021861045987ccd3e27c7eae5af0cf33
-      version: 0.18.0
-  repo: jenkins2
-  tags:
-  - 2.319.3-debian11
-  - 2.319-debian11
-  - 2.319.3
-  - '2.319'
-  templateArgs:
-    c2dRelease: 2.319.3
-
