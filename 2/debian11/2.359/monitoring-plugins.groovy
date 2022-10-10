@@ -50,12 +50,19 @@ if (!install_monitoring && !install_prometheus) {
 def instance = Jenkins.getInstanceOrNull()
 
 // Jenkins installation and configuration already completed
-if (instance.installState.isSetupComplete()) {
-  println "### Jenkins is ready."
-  return
+def retries = 0
+def max_retries = 13
+
+while (!instance.installState.isSetupComplete() && retries <= max_retries) {
+  println "### Jenkins is not ready."
+  sleep 600
+  retries++
 }
 
-sleep 6400
+if (retries == max_retries) {
+  println "### Jenkins failed to start after ${max_retries} retries."
+  return
+}
 
 def uc = instance.getUpdateCenter()
 def requires_restart = false
