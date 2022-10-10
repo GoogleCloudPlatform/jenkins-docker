@@ -55,7 +55,7 @@ def max_retries = 13
 
 while (!instance.installState.isSetupComplete() && retries <= max_retries) {
   println "### Jenkins is not ready."
-  sleep 60000
+  sleep 6000
   retries++
 }
 
