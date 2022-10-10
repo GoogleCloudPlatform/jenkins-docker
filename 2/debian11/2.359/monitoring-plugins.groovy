@@ -55,7 +55,7 @@ def max_retries = 13
 
 while (!instance.installState.isSetupComplete() && retries <= max_retries) {
   println "### Jenkins is not ready."
-  sleep 600
+  sleep 60000
   retries++
 }
 
@@ -70,7 +70,7 @@ def requires_restart = false
 plugins.each { plugin ->
   def pl = uc.getPlugin(plugin)
 
-  c = 10
+  c = 20
   while (pl == null && c != 0) {
     println "### Plugin ${plugin} retry..."
     sleep(1280)
