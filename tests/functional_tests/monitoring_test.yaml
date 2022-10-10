@@ -29,7 +29,7 @@ setup:
   - 'INSTALL_MONITORING=true'
   - '-d'
   - '$IMAGE'
-- command: [sleep, 180s]
+- command: [sleep, 500s]
 
 teardown:
 - command: [docker, stop, some-jenkins-$UNIQUE]
