@@ -1,4 +1,4 @@
-FROM marketplace.gcr.io/google/debian11
+FROM gcr.io/google-appengine/openjdk
 
 RUN mkdir /docker-entrypoint-initdb.d
 
@@ -38,12 +38,12 @@ RUN mkdir -p /usr/share/doc/tini && curl -fsSL https://raw.githubusercontent.com
 COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
 
 # jenkins version being bundled in this docker image
-ENV JENKINS_VERSION 2.359
+ENV JENKINS_VERSION 2.373
 
-ENV C2D_RELEASE 2.359.0
+ENV C2D_RELEASE 2.373.0
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=e1f96b29e6c51484d635d8799cb52f0a5fc92b107c50ee74c5f79dab482fc928
+ARG JENKINS_SHA=9bf0a21b0a4c8b385a46c68e628fd38d0b7410b1d09631700ebec58dd01d97f9
 
 # Can be used to customize where jenkins.war get downloaded from
 
