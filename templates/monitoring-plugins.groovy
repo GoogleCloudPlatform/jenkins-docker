@@ -33,6 +33,7 @@ def install_prometheus = env['INSTALL_PROMETHEUS']
 
 if (install_monitoring) {
   plugins << "monitoring"
+  plugins << "cloudbees-disk-usage-simple"
   println "### Monitoring plugin should be installed."
 }
 
