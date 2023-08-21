@@ -100,7 +100,7 @@ plugins.each { plugin ->
 if (requires_restart) {
   println "### Restart is required. Restarting it..."
   instance.save()
-  instance.doSafeRestart()
+  instance.safeRestart()
 }
 
 println "### Monitoring plugins installation completed"
