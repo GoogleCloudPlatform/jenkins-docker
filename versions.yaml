@@ -32,9 +32,9 @@ versions:
       version: 0.19.0
   repo: jenkins2
   tags:
-  -  2.451-debian11
+  - 2.451-debian11
   - 2-debian11
-  - ' 2.451'
+  - '2.451'
   - '2'
   - latest
   templateArgs:
