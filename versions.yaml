@@ -21,21 +21,21 @@
 cloudbuild:
   enable_parallel: false
 versions:
-- dir: 2/debian11/2.451
+- dir: 2/debian11/2.452
   from: marketplace.gcr.io/google/c2d-debian11
   packages:
     jenkins:
-      sha256: 0154893dbf2a3e29851cb5246a2723e8aba030717f4ab65263c039a83865245d
-      version: '2.451'
+      sha256: 1fa0d3c2827fc466caf8b747d02b7f70bc56bc4ac2a172808bcfe37bff7e702c
+      version: '2.452'
     tini:
       sha256: c5b0666b4cb676901f90dfcb37106783c5fe2077b04590973b885950611b30ee
       version: 0.19.0
   repo: jenkins2
   tags:
-  - 2.451-debian11
+  - 2.452-debian11
   - 2-debian11
-  - '2.451'
+  - '2.452'
   - '2'
   - latest
   templateArgs:
-    c2dRelease: 2.451.0
+    c2dRelease: 2.452.0
