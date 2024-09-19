@@ -1,10 +1,10 @@
-FROM marketplace.gcr.io/google/c2d-debian11 as ospo
+FROM marketplace.gcr.io/google/debian12 as ospo
 
 # Download Licenses and restricted source-code
 COPY components.csv /components.csv
 COPY source_code.txt /source_code.txt
 
-RUN apt update && apt -y install ca-certificates
+RUN apt update && apt -y install ca-certificates curl
 
 RUN curl -o /download-licenses.sh -L https://raw.githubusercontent.com/GoogleCloudPlatform/click-to-deploy/master/scripts/download-licenses.sh \
 		&& curl -o /download-ref-repos.sh -L https://raw.githubusercontent.com/GoogleCloudPlatform/click-to-deploy/master/scripts/download-ref-repos.sh \
@@ -16,7 +16,7 @@ RUN mkdir -p /usr/src/licenses \
 		&& /download-ref-repos.sh /source_code.txt /usr/src
 
 
-FROM marketplace.gcr.io/google/c2d-debian11
+FROM marketplace.gcr.io/google/debian12
 
 COPY --from=ospo /usr/src /usr/src
 
@@ -58,12 +58,12 @@ RUN mkdir -p /usr/share/doc/tini && curl -fsSL https://raw.githubusercontent.com
 COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
 
 # jenkins version being bundled in this docker image
-ENV JENKINS_VERSION 2.452
+ENV JENKINS_VERSION 2.477
 
-ENV C2D_RELEASE 2.452.0
+ENV C2D_RELEASE 2.477
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=1fa0d3c2827fc466caf8b747d02b7f70bc56bc4ac2a172808bcfe37bff7e702c
+ARG JENKINS_SHA=ed925f86e30d57b1534aca4be7f84e45815f8628e8a4e26d7fc7a3ab43f5c1d9
 
 # Can be used to customize where jenkins.war get downloaded from
 
