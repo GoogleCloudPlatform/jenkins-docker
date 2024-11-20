@@ -23,8 +23,6 @@ setup:
   - run
   - '--name'
   - 'some-jenkins-$UNIQUE'
-  - '-p'
-  - '8082:8080'
   - '-e'
   - 'INSTALL_PROMETHEUS=true'
   - '-d'
