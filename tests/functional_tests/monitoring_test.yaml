@@ -41,7 +41,7 @@ tests:
   command:
     - sh
     - -c
-    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` -s http://localhost:8081/monitoring
+    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` -s http://localhost:8080/monitoring
   expect:
     stdout:
       matches: Last collect time

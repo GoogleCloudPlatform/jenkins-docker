@@ -41,7 +41,7 @@ tests:
   command:
     - sh
     - -c
-    - curl -L -s http://localhost:8082/prometheus
+    - curl -L -s http://localhost:8080/prometheus
   expect:
     stdout:
       matches: TYPE default_jenkins_executors_available gauge

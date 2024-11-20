@@ -31,7 +31,7 @@ tests:
   command:
     - sh
     - -c
-    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` http://localhost:8083/api/json
+    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` http://localhost:8080/api/json
   expect:
     stdout:
       matches: hudson.model.Hudson
