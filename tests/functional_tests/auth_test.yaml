@@ -18,7 +18,7 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 setup:
-- command: [docker, run, --privileged=true, --name, some-jenkins-$UNIQUE-id, -p, '8080:8080', -d, '$IMAGE']
+- command: [docker, run, --privileged=true, --name, some-jenkins-$UNIQUE-id, -p, '8082:8080', -d, '$IMAGE']
 - command: [sleep, 70s]
 
 teardown:
@@ -31,7 +31,7 @@ tests:
   command:
     - sh
     - -c
-    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` http://localhost:8080/api/json
+    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` http://localhost:8082/api/json
   expect:
     stdout:
       matches: hudson.model.Hudson
