@@ -24,7 +24,7 @@ setup:
   - '--name'
   - 'some-jenkins-$UNIQUE'
   - '-p'
-  - '8082:8080'
+  - '8081:8080'
   - '-e'
   - 'INSTALL_MONITORING=true'
   - '-d'
@@ -41,7 +41,7 @@ tests:
   command:
     - sh
     - -c
-    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` -s http://localhost:8082/monitoring
+    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` -s http://localhost:8081/monitoring
   expect:
     stdout:
       matches: Last collect time
@@ -49,7 +49,7 @@ tests:
   command:
     - sh
     - -c
-    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` -s http://localhost:8082/monitoring?format=prometheus
+    - curl --user admin:`cat /var/jenkins_home/secrets/initialAdminPassword` -s http://localhost:8081/monitoring?format=prometheus
   expect:
     stdout:
       matches: TYPE javamelody_memory_used_bytes gauge

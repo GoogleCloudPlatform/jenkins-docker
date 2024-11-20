@@ -22,12 +22,12 @@ cloudbuild:
   docker_image: gcr.io/cloud-builders/docker:24.0.9
   enable_parallel: false
 versions:
-- dir: 2/debian12/2.480
+- dir: 2/debian12/2.486
   from: marketplace.gcr.io/google/debian12
   packages:
     jenkins:
-      sha256: b9cb2a0d6489805da7b0b198cdedf004f0251eb0848b6cf82128755e76b5d93d
-      version: '2.480'
+      sha256: a5a913dfcf0314087267a79337a441949f2193a6c39e29da7b6be5c8676f52dc
+      version: '2.486'
     tini:
       sha256: c5b0666b4cb676901f90dfcb37106783c5fe2077b04590973b885950611b30ee
       version: 0.19.0
@@ -36,10 +36,10 @@ versions:
   - key: com.googleapis.cloudmarketplace.product.service.name
     value: services/515fce80-e53c-42ce-8425-3cdf6fc0f0d4.cloudpartnerservices.goog
   tags:
-  - 2.480-debian12
+  - 2.486-debian12
   - 2-debian12
-  - '2.480'
+  - '2.486'
   - '2'
   - latest
   templateArgs:
-    c2dRelease: 2.480
+    c2dRelease: 2.486
