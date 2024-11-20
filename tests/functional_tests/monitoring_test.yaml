@@ -23,8 +23,6 @@ setup:
   - run
   - '--name'
   - 'some-jenkins-$UNIQUE'
-  - '-p'
-  - '8080:8080'
   - '-e'
   - 'INSTALL_MONITORING=true'
   - '-d'
