@@ -22,7 +22,10 @@ COPY --from=ospo /usr/src /usr/src
 
 RUN mkdir /docker-entrypoint-initdb.d
 
-RUN apt-get update && apt-get install -y git curl openjdk-17-jdk && rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+    && apt-get install -y \
+      git ca-certificates curl openjdk-17-jdk \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT 50000
@@ -58,12 +61,12 @@ RUN mkdir -p /usr/share/doc/tini && curl -fsSL https://raw.githubusercontent.com
 COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
 
 # jenkins version being bundled in this docker image
-ENV JENKINS_VERSION 2.486
+ENV JENKINS_VERSION 2.494
 
-ENV C2D_RELEASE 2.486
+ENV C2D_RELEASE 2.494.1
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=a5a913dfcf0314087267a79337a441949f2193a6c39e29da7b6be5c8676f52dc
+ARG JENKINS_SHA=2f85910fa035d8bb6460ab5b4c574f95e9e72a39b14419df608186bf704f64c4
 
 # Can be used to customize where jenkins.war get downloaded from
 

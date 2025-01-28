@@ -26,7 +26,10 @@ COPY --from=ospo /usr/src /usr/src
 
 RUN mkdir /docker-entrypoint-initdb.d
 
-RUN apt-get update && apt-get install -y git curl openjdk-17-jdk && rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+    && apt-get install -y \
+      git ca-certificates curl openjdk-17-jdk \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT 50000
